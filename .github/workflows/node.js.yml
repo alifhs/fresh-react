@@ -28,9 +28,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - name: Build and deploy strapi
 
-    - run: |
-         ls
-         mkdir script
-         echo $KEY > script/key.pem
-         cat script/key.pem
+      - run: |
+          ls
+          mkdir script
+          echo $KEY > script/key.pem
+          cat script/key.pem

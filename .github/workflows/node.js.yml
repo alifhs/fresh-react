@@ -41,6 +41,6 @@ jobs:
         ls
         echo "$STRAPI_EC2_PRIVATE_KEY" > scripts/key.pem
         chmod 600 scripts/key.pem
-        scp -o 'StrictHostKeyChecking no' -i ./scripts/key.pem -r test/ ubuntu@ec2-13-214-168-105.ap-southeast-1.compute.amazonaws.com:~/delete
+        scp -o 'StrictHostKeyChecking no' -i ./scripts/key.pem -r test/ $STRAPI_EC2_USERNAME@$STRAPI_EC2_HOSTNAME:~/delete
         echo "copied files"
               

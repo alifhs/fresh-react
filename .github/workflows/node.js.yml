@@ -9,10 +9,10 @@ on:
   pull_request:
     branches: [ "main" ]
 env: 
-  KEY: "Ddd"
-  STRAPI_EC2_PRIVATE_KEY: ${{ secrets.STRAPI_EC2_PRIVATE_KEY }}
-  STRAPI_EC2_USERNAME: ${{ secrets.STRAPI_EC2_USERNAME }}
-  STRAPI_EC2_HOSTNAME: ${{ secrets.STRAPI_EC2_HOSTNAME }}
+  # KEY: "Ddd"
+  # STRAPI_EC2_PRIVATE_KEY: ${{ secrets.STRAPI_EC2_PRIVATE_KEY }}
+  # STRAPI_EC2_USERNAME: ${{ secrets.STRAPI_EC2_USERNAME }}
+  # STRAPI_EC2_HOSTNAME: ${{ secrets.STRAPI_EC2_HOSTNAME }}
 
 jobs:
   build:
@@ -32,15 +32,15 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
-    - name: Build and deploy strapi
-      run: |
-        ls
-        mkdir test
-        echo "test txt" > test/abc.txt
-        mkdir -p scripts
-        ls
-        echo "$STRAPI_EC2_PRIVATE_KEY" > scripts/key.pem
-        chmod 600 scripts/key.pem
-        scp -o 'StrictHostKeyChecking no' -i ./scripts/key.pem -r test/ $STRAPI_EC2_USERNAME@$STRAPI_EC2_HOSTNAME:~/delete
-        echo "copied files"
+    # - name: Build and deploy strapi
+    #   run: |
+    #     ls
+    #     mkdir test
+    #     echo "test txt" > test/abc.txt
+    #     mkdir -p scripts
+    #     ls
+    #     echo "$STRAPI_EC2_PRIVATE_KEY" > scripts/key.pem
+    #     chmod 600 scripts/key.pem
+    #     scp -o 'StrictHostKeyChecking no' -i ./scripts/key.pem -r test/ $STRAPI_EC2_USERNAME@$STRAPI_EC2_HOSTNAME:~/delete
+    #     echo "copied files"
               
